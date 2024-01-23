@@ -19,5 +19,9 @@ module.exports = {
             },
             rules: {},
         },
+        {
+            files: ["*.ts", "*.tsx"],
+            parser: "@typescript-eslint/parser"
+        }
     ],
 };
