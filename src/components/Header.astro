@@ -1,0 +1,37 @@
+---
+import { ModeToggle } from "@/components/ModeToggle";
+import { MobileMenu } from "@/components/MobileMenu";
+import { Icon } from "astro-icon/components";
+import { buttonVariants } from "@/components/ui/button";
+import { IconBrandGithub } from "@tabler/icons-react";
+import { Navbar } from "@/components/Navbar";
+
+const activePath = Astro.url.pathname;
+---
+
+<header
+  class="sticky top-0 z-50 w-full justify-center border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
+  <div
+    class="mx-auto flex h-14 w-full max-w-screen-2xl justify-between px-4 py-2 md:px-8 md:py-4"
+  >
+    <div class="flex gap-8">
+      <MobileMenu client:load />
+      <a href="/" class="hidden items-center gap-2 md:flex">
+        <Icon name="rocketLogo" class="size-6" />
+        <span class="font-bold">AstroBlog</span>
+      </a>
+      <Navbar activePath={activePath} client:load />
+    </div>
+    <div class="flex items-center gap-2">
+      <a
+        class={buttonVariants({ variant: "ghost", size: "icon" })}
+        target="_blank"
+        href="/"
+      >
+        <IconBrandGithub className="size-5" />
+      </a>
+      <ModeToggle client:load />
+    </div>
+  </div>
+</header>
